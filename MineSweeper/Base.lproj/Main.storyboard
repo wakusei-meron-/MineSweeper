@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Top View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="TopVC" storyboardIdentifier="TopVC" id="vXZ-lx-hvc" customClass="MSTopViewController" customModule="MineSweeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +17,176 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcO-RL-5fU">
+                                <rect key="frame" x="277" y="303" width="30" height="30"/>
+                                <state key="normal" title="遊ぶ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vbJ-Hr-tZb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="まいんすい〜ぱ〜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGl-iI-2HG">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ZcO-RL-5fU" secondAttribute="centerY" id="9e6-yS-kif"/>
+                            <constraint firstAttribute="centerX" secondItem="DGl-iI-2HG" secondAttribute="centerX" id="UKB-ty-a2v"/>
+                            <constraint firstItem="DGl-iI-2HG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="94" id="UWA-uZ-k4I"/>
+                            <constraint firstAttribute="centerX" secondItem="ZcO-RL-5fU" secondAttribute="centerX" id="c8S-mr-SkZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DGl-iI-2HG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="UKB-ty-a2v"/>
+                                <exclude reference="UWA-uZ-k4I"/>
+                                <exclude reference="9e6-yS-kif"/>
+                                <exclude reference="c8S-mr-SkZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="DGl-iI-2HG"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="UKB-ty-a2v"/>
+                                <include reference="UWA-uZ-k4I"/>
+                                <include reference="9e6-yS-kif"/>
+                                <include reference="c8S-mr-SkZ"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="SoN-dd-flS">
+            <objects>
+                <viewController restorationIdentifier="GameVC" storyboardIdentifier="GameVC" id="nA0-6s-s87" customClass="MSGameViewController" customModule="MineSweeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ycP-DV-Hna"/>
+                        <viewControllerLayoutGuide type="bottom" id="s0V-DB-oT8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hj9-ID-SHE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tty-DY-Iw6" customClass="MSGameFieldView" customModule="MineSweeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhP-qZ-3k8">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="LuG-QX-2sh"/>
+                                    <constraint firstAttribute="height" constant="75" id="oLZ-cR-syO"/>
+                                </constraints>
+                                <state key="normal" title="Mine Mode">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LuG-QX-2sh"/>
+                                        <exclude reference="oLZ-cR-syO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="LuG-QX-2sh"/>
+                                        <include reference="oLZ-cR-syO"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="mineModeButtonDidClick:" destination="nA0-6s-s87" eventType="touchUpInside" id="5rO-hq-18G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z26-gA-cQO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Unknown Mode">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="unknownModeButtonDidClick:" destination="nA0-6s-s87" eventType="touchUpInside" id="JdT-7y-DGS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z26-gA-cQO" firstAttribute="leading" secondItem="QhP-qZ-3k8" secondAttribute="trailing" id="1sf-qr-hjk"/>
+                            <constraint firstItem="QhP-qZ-3k8" firstAttribute="baseline" secondItem="z26-gA-cQO" secondAttribute="firstBaseline" id="7EF-5y-yoB"/>
+                            <constraint firstItem="z26-gA-cQO" firstAttribute="width" secondItem="QhP-qZ-3k8" secondAttribute="width" id="At5-h0-fQR"/>
+                            <constraint firstItem="z26-gA-cQO" firstAttribute="top" secondItem="QhP-qZ-3k8" secondAttribute="top" id="Jon-oR-txP"/>
+                            <constraint firstItem="z26-gA-cQO" firstAttribute="baseline" secondItem="QhP-qZ-3k8" secondAttribute="firstBaseline" id="Lc3-ZA-saX"/>
+                            <constraint firstItem="tty-DY-Iw6" firstAttribute="trailing" secondItem="z26-gA-cQO" secondAttribute="trailing" id="NuM-y7-Xid"/>
+                            <constraint firstItem="QhP-qZ-3k8" firstAttribute="top" secondItem="Hj9-ID-SHE" secondAttribute="top" id="WLP-sD-9Ti"/>
+                            <constraint firstAttribute="trailing" secondItem="tty-DY-Iw6" secondAttribute="trailing" id="Xye-hO-Ral"/>
+                            <constraint firstItem="tty-DY-Iw6" firstAttribute="top" secondItem="QhP-qZ-3k8" secondAttribute="bottom" id="YK8-ib-JJX"/>
+                            <constraint firstItem="tty-DY-Iw6" firstAttribute="leading" secondItem="Hj9-ID-SHE" secondAttribute="leading" id="dsv-d5-TNX"/>
+                            <constraint firstItem="tty-DY-Iw6" firstAttribute="bottom" secondItem="s0V-DB-oT8" secondAttribute="top" id="n4B-S4-nuP"/>
+                            <constraint firstItem="QhP-qZ-3k8" firstAttribute="leading" secondItem="tty-DY-Iw6" secondAttribute="leading" id="sfu-G1-qRm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="tty-DY-Iw6"/>
+                                <exclude reference="QhP-qZ-3k8"/>
+                                <exclude reference="z26-gA-cQO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7EF-5y-yoB"/>
+                                <exclude reference="WLP-sD-9Ti"/>
+                                <exclude reference="sfu-G1-qRm"/>
+                                <exclude reference="NuM-y7-Xid"/>
+                                <exclude reference="Xye-hO-Ral"/>
+                                <exclude reference="YK8-ib-JJX"/>
+                                <exclude reference="dsv-d5-TNX"/>
+                                <exclude reference="n4B-S4-nuP"/>
+                                <exclude reference="1sf-qr-hjk"/>
+                                <exclude reference="At5-h0-fQR"/>
+                                <exclude reference="Jon-oR-txP"/>
+                                <exclude reference="Lc3-ZA-saX"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="tty-DY-Iw6"/>
+                                <include reference="QhP-qZ-3k8"/>
+                                <include reference="z26-gA-cQO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7EF-5y-yoB"/>
+                                <include reference="WLP-sD-9Ti"/>
+                                <include reference="sfu-G1-qRm"/>
+                                <include reference="NuM-y7-Xid"/>
+                                <include reference="Xye-hO-Ral"/>
+                                <include reference="YK8-ib-JJX"/>
+                                <include reference="dsv-d5-TNX"/>
+                                <include reference="n4B-S4-nuP"/>
+                                <include reference="1sf-qr-hjk"/>
+                                <include reference="At5-h0-fQR"/>
+                                <include reference="Jon-oR-txP"/>
+                                <include reference="Lc3-ZA-saX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="fieldView" destination="tty-DY-Iw6" id="Bja-kc-cs2"/>
+                        <outlet property="mineModeButton" destination="QhP-qZ-3k8" id="7bg-yu-IZ8"/>
+                        <outlet property="unknownModeButton" destination="z26-gA-cQO" id="jNh-7B-cmP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JsA-yb-h5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1140" y="372"/>
         </scene>
     </scenes>
 </document>

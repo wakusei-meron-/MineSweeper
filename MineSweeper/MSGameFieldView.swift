@@ -10,12 +10,122 @@ import UIKit
 
 class MSGameFieldView: UIView {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    let numRows: Int = 5, numColumns: Int = 5
+    let numMine: Int = 5
+    
+    var buttonArray = [[MSButton]]()
+    
     override func drawRect(rect: CGRect) {
-        // Drawing code
+        
+        let btnWidth : CGFloat  = rect.size.width / CGFloat(numRows)
+        let btnHeight : CGFloat = rect.size.height / CGFloat(numColumns)
+        let btn = MSButton()
+        
+        for row_i in 0..<numRows {
+            
+            var columnArray = [MSButton]()
+            
+            for col_j in 0..<numColumns{
+                
+                let btn = MSButton(frame: CGRect(
+                    x: btnWidth * CGFloat(row_i),
+                    y: btnHeight * CGFloat(col_j),
+                    width: btnWidth,
+                    height: btnHeight)
+                )
+                btn.row = row_i
+                btn.column = col_j
+                
+                self.addSubview(btn)
+                columnArray.append(btn)
+            }
+            
+            buttonArray.append(columnArray)
+        }
     }
-    */
+    
+    func setupButtons(){
 
+        var currentNumMines = numMine
+        
+        for rowButtons in buttonArray as [Array]{
+            for btn in rowButtons as [MSButton]{
+                
+                btn.msState = MSButton.MSButtonState.unOpened
+                btn.isMine = setMineOrNot(Float(numRows * numColumns - (numRows * btn.row + btn.column)), a: Float(currentNumMines))
+                
+                if btn.isMine{
+                    
+                    currentNumMines--
+                    setAroundMineNum(btn.row, col_j: btn.column)
+                }
+            }
+        }
+    }
+    
+    func setAroundMineNum(row_i: Int, col_j: Int){
+        
+        // +1 around number of mine
+        for i in -1...1{
+            for j in -1...1{
+                
+                // skip mine button
+                if i==0 && j==0{ continue }
+                
+                // skip outside the field
+                if row_i + i < 0 || col_j + j < 0{ continue }
+                if row_i + i >= numRows || col_j + j >= numColumns { continue }
+                
+                (buttonArray[row_i + i][col_j + j] as MSButton).numAroundMine++
+            }
+        }
+    }
+    
+    func setMineOrNot(n: Float, a: Float) -> Bool{
+        
+        // set Mines
+        /*
+        モンテカルロ法みたいな方法？
+        
+        地雷かどうかわからないマスが全部でn、地雷の数がaの時、
+        １つ目のマスが地雷である確率pは
+        p = a / n
+        
+        0~1の乱数と地雷である確率を比較して、地雷かそうでないか決定する
+        
+        (i)１つ目のマスが地雷だとすると、２つ目のマスが地雷である確率は
+        p = (a-1) / (n - 1)
+        
+        (ii)１つ目のマスが地雷じゃないとすると、２つ目のマスが地雷である確率は
+        p = a / (n - 1)
+        
+        
+        コレを繰り返していくと、合計n個のマスにa個の地雷を選ぶことができる。
+        
+        */
+        let mineProb = a / n
+        let p = Float(arc4random()) / Float(UINT32_MAX)
+        
+        if p < mineProb{
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    func isCleared() -> Bool{
+        
+        for rowButtons in buttonArray as [Array]{
+            for btn in rowButtons as [MSButton]{
+                
+                if btn.isMine{ continue }
+                if btn.msState != MSButton.MSButtonState.opened{
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 }

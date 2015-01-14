@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3783C2B71A5E14E100F9CA44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2B61A5E14E100F9CA44 /* AppDelegate.swift */; };
-		3783C2B91A5E14E100F9CA44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2B81A5E14E100F9CA44 /* ViewController.swift */; };
 		3783C2BC1A5E14E100F9CA44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3783C2BA1A5E14E100F9CA44 /* Main.storyboard */; };
 		3783C2BE1A5E14E100F9CA44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3783C2BD1A5E14E100F9CA44 /* Images.xcassets */; };
 		3783C2C11A5E14E100F9CA44 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3783C2BF1A5E14E100F9CA44 /* LaunchScreen.xib */; };
 		3783C2CD1A5E14E200F9CA44 /* MineSweeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2CC1A5E14E200F9CA44 /* MineSweeperTests.swift */; };
+		3783C2DA1A5E162B00F9CA44 /* MSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2D91A5E162B00F9CA44 /* MSButton.swift */; };
+		3783C2DC1A5E163F00F9CA44 /* MSTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2DB1A5E163F00F9CA44 /* MSTopViewController.swift */; };
+		3783C2DE1A5E16E800F9CA44 /* MSGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2DD1A5E16E800F9CA44 /* MSGameViewController.swift */; };
+		3783C2E01A5E18AB00F9CA44 /* MSGameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783C2DF1A5E18AB00F9CA44 /* MSGameFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +32,16 @@
 		3783C2B11A5E14E100F9CA44 /* MineSweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MineSweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3783C2B51A5E14E100F9CA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3783C2B61A5E14E100F9CA44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3783C2B81A5E14E100F9CA44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3783C2BB1A5E14E100F9CA44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3783C2BD1A5E14E100F9CA44 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3783C2C01A5E14E100F9CA44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3783C2C61A5E14E200F9CA44 /* MineSweeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MineSweeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3783C2CB1A5E14E200F9CA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3783C2CC1A5E14E200F9CA44 /* MineSweeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineSweeperTests.swift; sourceTree = "<group>"; };
+		3783C2D91A5E162B00F9CA44 /* MSButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButton.swift; sourceTree = "<group>"; };
+		3783C2DB1A5E163F00F9CA44 /* MSTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSTopViewController.swift; sourceTree = "<group>"; };
+		3783C2DD1A5E16E800F9CA44 /* MSGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSGameViewController.swift; sourceTree = "<group>"; };
+		3783C2DF1A5E18AB00F9CA44 /* MSGameFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSGameFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +83,10 @@
 		3783C2B31A5E14E100F9CA44 /* MineSweeper */ = {
 			isa = PBXGroup;
 			children = (
+				3783C2D61A5E157400F9CA44 /* Model */,
+				3783C2D71A5E157C00F9CA44 /* View */,
+				3783C2D81A5E158200F9CA44 /* Controller */,
 				3783C2B61A5E14E100F9CA44 /* AppDelegate.swift */,
-				3783C2B81A5E14E100F9CA44 /* ViewController.swift */,
-				3783C2BA1A5E14E100F9CA44 /* Main.storyboard */,
 				3783C2BD1A5E14E100F9CA44 /* Images.xcassets */,
 				3783C2BF1A5E14E100F9CA44 /* LaunchScreen.xib */,
 				3783C2B41A5E14E100F9CA44 /* Supporting Files */,
@@ -110,6 +117,32 @@
 				3783C2CB1A5E14E200F9CA44 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3783C2D61A5E157400F9CA44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3783C2D71A5E157C00F9CA44 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3783C2BA1A5E14E100F9CA44 /* Main.storyboard */,
+				3783C2DF1A5E18AB00F9CA44 /* MSGameFieldView.swift */,
+				3783C2D91A5E162B00F9CA44 /* MSButton.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3783C2D81A5E158200F9CA44 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3783C2DB1A5E163F00F9CA44 /* MSTopViewController.swift */,
+				3783C2DD1A5E16E800F9CA44 /* MSGameViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3783C2B91A5E14E100F9CA44 /* ViewController.swift in Sources */,
+				3783C2DC1A5E163F00F9CA44 /* MSTopViewController.swift in Sources */,
+				3783C2E01A5E18AB00F9CA44 /* MSGameFieldView.swift in Sources */,
+				3783C2DA1A5E162B00F9CA44 /* MSButton.swift in Sources */,
+				3783C2DE1A5E16E800F9CA44 /* MSGameViewController.swift in Sources */,
 				3783C2B71A5E14E100F9CA44 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
