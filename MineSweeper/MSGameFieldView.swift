@@ -10,10 +10,20 @@ import UIKit
 
 class MSGameFieldView: UIView {
 
-    let numRows: Int = 5, numColumns: Int = 5
-    let numMine: Int = 5
+    let numRows: Int, numColumns: Int
+    let numMine: Int
     
     var buttonArray = [[MSButton]]()
+    
+    required init(coder aDecoder: NSCoder) {
+        
+        let m = MSGameManager.manager()
+        numRows    = m.getNumRows()
+        numColumns = m.getNumColumns()
+        numMine    = m.getNumMines()
+        
+        super.init(coder: aDecoder)
+    }
     
     override func drawRect(rect: CGRect) {
         
@@ -28,7 +38,7 @@ class MSGameFieldView: UIView {
             for col_j in 0..<numColumns{
                 
                 let btn = MSButton(frame: CGRect(
-                    x: btnWidth * CGFloat(row_i),
+                    x: btnWidth  * CGFloat(row_i),
                     y: btnHeight * CGFloat(col_j),
                     width: btnWidth,
                     height: btnHeight)
@@ -57,13 +67,13 @@ class MSGameFieldView: UIView {
                 if btn.isMine{
                     
                     currentNumMines--
-                    setAroundMineNum(btn.row, col_j: btn.column)
+                    incrementAroundMineNum(btn.row, col_j: btn.column)
                 }
             }
         }
     }
     
-    func setAroundMineNum(row_i: Int, col_j: Int){
+    func incrementAroundMineNum(row_i: Int, col_j: Int){
         
         // +1 around number of mine
         for i in -1...1{

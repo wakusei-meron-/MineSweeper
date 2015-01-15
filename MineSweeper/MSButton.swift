@@ -12,9 +12,9 @@ class MSButton: UIButton {
     
     let kButtonBorderWidth: CGFloat = 0.5
     
-    let defaultButtonTitle = ""
-    let mineButtonTitle = "Mine"
-    let mineCheckedButtonTitle = "Danger"
+    let defaultButtonTitle        = ""
+    let mineButtonTitle           = "×"
+    let mineCheckedButtonTitle    = "●"
     let unknownCheckedButtonTitle = "?"
     
     var row: Int = -1, column: Int = -1
