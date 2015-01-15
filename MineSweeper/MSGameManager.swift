@@ -69,7 +69,7 @@ class MSGameManager {
         switch(currentGameLevel()){
         case .Easy  :return 5
         case .Normal:return 10
-        case .Hard  :return 20
+        case .Hard  :return 30
         }
     }
 }

@@ -85,6 +85,10 @@ class MSGameViewController: UIViewController, UIAlertViewDelegate{
             switch(currentMSMode){
             case .Open:
                 selectedButton.open()
+                if !selectedButton.isMine && selectedButton.numAroundMine == 0{
+                    
+                    fieldView.openAroundButton(row, col: col)
+                }
             case .CheckMine:
                 selectedButton.checkMineToggle()
             case .Unknown:

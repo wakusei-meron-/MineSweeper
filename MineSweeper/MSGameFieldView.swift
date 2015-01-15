@@ -91,6 +91,28 @@ class MSGameFieldView: UIView {
         }
     }
     
+    func openAroundButton(row: Int, col: Int){
+        
+        for i in -1...1{
+            for j in -1...1{
+                
+                // skip outside the field
+                if row + i < 0 || col + j < 0{ continue }
+                if row + i >= numRows || col + j >= numColumns { continue }
+                
+                let btn = buttonArray[row + i][col + j] as MSButton
+                
+                if btn.msState == MSButton.MSButtonState.opened{ continue }
+                btn.open()
+                
+                if btn.numAroundMine == 0{
+                    
+                    openAroundButton(btn.row, col: btn.column)
+                }
+            }
+        }
+    }
+    
     func setMineOrNot(n: Float, a: Float) -> Bool{
         
         // set Mines

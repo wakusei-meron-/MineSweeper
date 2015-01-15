@@ -60,7 +60,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4F5-l1-clq"/>
                                 </constraints>
-                                <state key="normal" title="むずかしい(10x15 ばくだん20コ)">
+                                <state key="normal" title="むずかしい(10x15 ばくだん30コ)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
